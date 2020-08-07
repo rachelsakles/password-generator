@@ -27,19 +27,22 @@ function generatePassword() {
 
     options.length = parseInt(
         prompt("How many characters would you like your password to be? Please choose between 8 and 128")
-    );
+    ); 
 
+    // User has to choose a length between 8-128 characters. Anything less or more is an invalid parameter
     if (options.length < 8 || options.length > 128) {
         alert("Incorrect password length")
         return "Invalid Parameters";
-    }
+    }  
 
+    // Have user confirm which options they want in their password
     options.special = confirm("Would you like to use special characters?");
     options.numeric = confirm("Would you like to use numeric characters?");
     options.lowercase = confirm("Would you like to use lowercase characters?");
     options.uppercase = confirm("Would you like to use uppercase characters?");
     console.log(options);
 
+    // Password is generated depending on what the user chooses
     var password = "";
     for (var i = 0; i < options.length; i++) {
         if (options.special) {
@@ -59,10 +62,11 @@ function generatePassword() {
         }
 
     }
+    // Return the result, and cut it down into a substring that is the correct length
     return password.substring(0, options.length);
 }
 
-
+// Function to get a random value from a string
 function getRandomValue(str) {
     return str[Math.floor(Math.random() * str.length)];
 }
